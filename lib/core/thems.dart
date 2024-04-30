@@ -63,5 +63,3 @@ final darkThem = ThemeData(
           borderSide: BorderSide(color: AppColors.redColor),
           borderRadius: BorderRadius.circular(15))),
 );
-
-mixin primaryColorDark {}

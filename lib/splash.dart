@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/core/style.dart';
-import 'package:taskati/feature/home/home_view.dart';
+import 'package:taskati/feature/UpLode_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,8 +17,8 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 4), () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => HomeView()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => UpLoadView()));
     });
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:hive/hive.dart';
 
 class AppLocal {
@@ -13,5 +15,10 @@ class AppLocal {
   static Future<dynamic> getData(String key) async {
     var box = Hive.box('user');
     return await box.get(key);
+  }
+
+  static Future<dynamic> deleteData(String key) async {
+    var box = Hive.box('user');
+    return await box.delete('user');
   }
 }

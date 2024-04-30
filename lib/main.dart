@@ -7,11 +7,13 @@ import 'package:taskati/core/thems.dart';
 import 'package:taskati/splash.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter(TaskAdapter());
+
   await Hive.openBox<Task>('task');
   await Hive.openBox<bool>('mode');
   await Hive.openBox('user');
-  Hive.registerAdapter(TaskAdapter());
 
   runApp(const MyApp());
 }
@@ -23,17 +25,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: Hive.box<bool>('mode').listenable(),
-      builder: (context, value, child) {
-        bool darkMode = value.get('darkMode', defaultValue: false)!;
-        return MaterialApp(
-          themeMode: darkMode ? ThemeMode.light : ThemeMode.dark,
-          darkTheme: darkThem,
-          theme: ligthThem,
-          debugShowCheckedModeBanner: false,
-          home: const SplashView(),
-        );
-      },
-    );
+        valueListenable: Hive.box<bool>('mode').listenable(),
+        builder: (context, value, child) {
+          bool darkMode = value.get('darkMode', defaultValue: false)!;
+          return MaterialApp(
+            themeMode: darkMode ? ThemeMode.light : ThemeMode.dark,
+            darkTheme: darkThem,
+            theme: ligthThem,
+            debugShowCheckedModeBanner: false,
+            home: const SplashView(),
+          );
+        });
   }
 }

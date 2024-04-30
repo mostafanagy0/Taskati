@@ -61,6 +61,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                     style:
                         getTitleStyle(color: Theme.of(context).primaryColor)),
                 TextFormField(
+                  style: getSubStyle(color: Theme.of(context).primaryColor),
                   controller: titleCon,
                   validator: (value) {
                     if (value!.isEmpty) {
